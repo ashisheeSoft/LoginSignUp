@@ -76,8 +76,6 @@ public class bottom_upfragment extends BottomSheetDialogFragment {
                             Toast.makeText(getActivity(), "verified", Toast.LENGTH_SHORT).show();
                             textView.setText("Verified");
                             DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users");
-                            Intent myIntet =new Intent(getActivity(),afterActivity.class);
-                            startActivity(myIntet);
 
                         }
 
