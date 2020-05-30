@@ -2,9 +2,9 @@ package com.example.ashish.loginsignup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +21,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ashish on 5/16/2020.
  */
-
 public class bottom_upfragment extends BottomSheetDialogFragment {
     FirebaseAuth fAuth;
     private  String verID;
     private  String rcd;
+
     private Button B1;
     private EditText mOtp;
     private TextView textView;
@@ -73,6 +75,7 @@ public class bottom_upfragment extends BottomSheetDialogFragment {
                         if (task.isSuccessful()){
                             Toast.makeText(getActivity(), "verified", Toast.LENGTH_SHORT).show();
                             textView.setText("Verified");
+                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users");
                             Intent myIntet =new Intent(getActivity(),afterActivity.class);
                             startActivity(myIntet);
 
